@@ -1,16 +1,13 @@
+import 'package:clock_test/ui/clock_base_app.dart';
+import 'package:clock_test/ui/clock_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    title: 'Alarm Demo',
-    theme: ThemeData(
-      primarySwatch: Colors.blue,
-    ),
-    home: AlarmApp(),
+  runApp(ClockBaseApp(
+    child: AlarmApp(),
   ));
 }
 
@@ -36,35 +33,48 @@ class _AlarmAppState extends State<AlarmApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Alarm App"),
-      ),
-      body: Center(
-        child: Column(
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            if (_timeSet) Text(_time.toString().substring(10, 15)),
+    return ClockScaffold(
+      mainTitle: "Clock App",
+      pages: [
+        TabContent(
+            icon: Icons.access_time_filled_rounded,
+            title: "Digital clock",
+            page: _alarmPage(context)),
+        TabContent(
+            icon: Icons.av_timer,
+            title: "Analog clock",
+            page: _alarmPage(context)),
+        TabContent(
+            icon: Icons.alarm, title: "Alarms", page: _alarmPage(context))
+      ],
+    );
+  }
+
+  Widget _alarmPage(BuildContext context) {
+    return Center(
+      child: Column(
+        // horizontal).
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          if (_timeSet) Text(_time.toString().substring(10, 15)),
+          ElevatedButton(
+            onPressed: () {
+              _selectTime(context);
+            },
+            child: Text("Select Time"),
+          ),
+          if (_timeSet)
             ElevatedButton(
               onPressed: () {
-                _selectTime(context);
+                setState(() {
+                  _timeSet = false;
+                });
+                _deleteAlarm(context);
               },
-              child: Text("Select Time"),
+              child: Text(
+                  "Delete Alarm for ${_time.toString().substring(10, 15)}"),
             ),
-            if (_timeSet)
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    _timeSet = false;
-                  });
-                  _deleteAlarm(context);
-                },
-                child: Text(
-                    "Delete Alarm for ${_time.toString().substring(10, 15)}"),
-              ),
-          ],
-        ),
+        ],
       ),
     );
   }
