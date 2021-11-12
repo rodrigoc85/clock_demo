@@ -1,5 +1,7 @@
+import 'package:clock_test/ui/analog_clock/analog_clock.dart';
 import 'package:clock_test/ui/clock_base_app.dart';
 import 'package:clock_test/ui/clock_scaffold.dart';
+import 'package:clock_test/ui/digital_clock.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -39,14 +41,44 @@ class _AlarmAppState extends State<AlarmApp> {
         TabContent(
             icon: Icons.access_time_filled_rounded,
             title: "Digital clock",
-            page: _alarmPage(context)),
+            page: _digitalClock(context)),
         TabContent(
             icon: Icons.av_timer,
             title: "Analog clock",
-            page: _alarmPage(context)),
+            page: _analogClock(context)),
         TabContent(
             icon: Icons.alarm, title: "Alarms", page: _alarmPage(context))
       ],
+    );
+  }
+
+  Widget _digitalClock(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          DigitalClock(),
+        ],
+      ),
+    );
+  }
+
+  Widget _analogClock(BuildContext context) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            height: MediaQuery.of(context).size.height * 0.8,
+            width: MediaQuery.of(context).size.width * 0.8,
+            child: AnalogClock(),
+          )
+        ],
+      ),
     );
   }
 
