@@ -3,7 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ClockScaffold extends StatelessWidget {
+class ClockScaffold extends StatefulWidget {
   final List<TabContent> pages;
   final String mainTitle;
 
@@ -14,36 +14,92 @@ class ClockScaffold extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  _ClockScaffoldState createState() => _ClockScaffoldState();
+}
+
+class _ClockScaffoldState extends State<ClockScaffold>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    if (Platform.isAndroid) {
+      _tabController = TabController(vsync: this, length: widget.pages.length);
+      _tabController.addListener(() {
+        setState(() {});
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    if (Platform.isAndroid) {
+      _tabController.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
-                items: pages
+                items: widget.pages
                     .map((page) => BottomNavigationBarItem(
                         icon: Icon(page.icon), label: page.title))
                     .toList()),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoPageScaffold(
                 navigationBar: CupertinoNavigationBar(
-                  middle: Text(pages[index].title),
+                  middle: Text(widget.pages[index].title),
+                  trailing: _hasAction(index)
+                      ? GestureDetector(
+                          onTap: _actionHandler(index),
+                          child: Icon(
+                            _actionIcon(index),
+                            size: 26,
+                            color: CupertinoColors.activeOrange,
+                          ),
+                        )
+                      : null,
                 ),
-                child: pages[index].page,
+                child: widget.pages[index].page,
               );
             })
-        : DefaultTabController(
-            length: pages.length,
-            child: Scaffold(
-              appBar: AppBar(
-                bottom: TabBar(
-                    tabs: pages
-                        .map((page) => Tab(icon: Icon(page.icon)))
-                        .toList()),
-                title: Text(mainTitle),
-              ),
-              body: TabBarView(
-                children: pages.map((page) => page.page).toList(),
-              ),
-            ));
+        : Scaffold(
+            appBar: AppBar(
+              bottom: TabBar(
+                  controller: _tabController,
+                  tabs: widget.pages
+                      .map((page) => Tab(icon: Icon(page.icon)))
+                      .toList()),
+              title: Text(widget.mainTitle),
+            ),
+            body: TabBarView(
+              physics: NeverScrollableScrollPhysics(),
+              controller: _tabController,
+              children: widget.pages.map((page) => page.page).toList(),
+            ),
+            floatingActionButton: _hasAction(_tabController.index)
+                ? FloatingActionButton(
+                    onPressed: _actionHandler(_tabController.index),
+                    child: Icon(
+                      _actionIcon(_tabController.index),
+                    ))
+                : null);
+  }
+
+  bool _hasAction(int index) {
+    return widget.pages[index].action != null;
+  }
+
+  _actionHandler(int index) {
+    return widget.pages[index].action!.onTap;
+  }
+
+  IconData _actionIcon(int index) {
+    return widget.pages[index].action!.icon;
   }
 }
 
@@ -61,12 +117,12 @@ class TabContent {
   IconData icon;
   String title;
   Widget page;
-  List<ActionItem>? actions;
+  ActionItem? action;
 
   TabContent({
     required this.icon,
     required this.title,
     required this.page,
-    this.actions,
+    this.action,
   });
 }

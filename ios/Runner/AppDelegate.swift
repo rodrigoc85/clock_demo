@@ -4,6 +4,8 @@ import Flutter
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
   var time:Array<Any>?
+  var notifications = [String]()
+    
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
@@ -61,7 +63,23 @@ import Flutter
     center.add(request)
       result("Alarm Notification is set")
   }
-
+  
+  /*private func getAlarms(result: FlutterResult) {
+    let encoder = JSONEncoder()
+    let center = UNUserNotificationCenter.current()
+    center.getPendingNotificationRequests(completionHandler: { requests in
+        for request in requests {
+            do {
+                
+                
+            }
+            catch {
+                print(error)
+            }
+        }
+    })
+  }*/
+    
   private func deleteAlarm(result: FlutterResult){
     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Omi"] )
     result("Alarm Notification is deleted")
