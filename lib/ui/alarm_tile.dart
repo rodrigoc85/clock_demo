@@ -1,7 +1,9 @@
 import 'package:clock_test/models/alarm_data.dart';
+import 'package:clock_test/providers/alarm_provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:clock_test/helpers/helpers.dart';
+import 'package:provider/provider.dart';
 
 class AlarmTile extends StatefulWidget {
   final AlarmData alarm;
@@ -15,6 +17,7 @@ class AlarmTile extends StatefulWidget {
 class _AlarmTileState extends State<AlarmTile> {
   @override
   Widget build(BuildContext context) {
+    final alarmProvider = Provider.of<AlarmProvider>(context, listen: false);
     return Column(
       children: [
         Container(
@@ -51,6 +54,7 @@ class _AlarmTileState extends State<AlarmTile> {
                     setState(() {
                       widget.alarm.enabled = newVal;
                     });
+                    alarmProvider.saveAlarm(widget.alarm);
                   })
             ],
           ),

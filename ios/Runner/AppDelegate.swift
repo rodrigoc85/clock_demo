@@ -26,7 +26,7 @@ import Flutter
     let channel = FlutterMethodChannel(name: "co.moxielabs.dev/alarm", binaryMessenger: controller.binaryMessenger)
     channel.setMethodCallHandler({
         (call: FlutterMethodCall, result: FlutterResult) -> Void in
-        guard call.method == "startAlarm" || call.method == "deleteAlarm" else {
+        guard call.method == "startAlarm" || call.method == "deleteAlarm" || call.method == "deleteAllAlarms" else {
             result(FlutterMethodNotImplemented)
             return
         }
@@ -37,6 +37,9 @@ import Flutter
         }
         else if(call.method == "deleteAlarm"){
             self.deleteAlarm(result: result)
+        }
+        else if(call.method == "deleteAllAlarms"){
+            self.removeAllAlarms(result: result)
         }
     })
 
@@ -65,18 +68,18 @@ import Flutter
     
     let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
     center.add(request)
-      result("Alarm Notification is set")
+      result("Ok")
   }
     
   private func removeAllAlarms(result: FlutterResult) {
     UNUserNotificationCenter.current().removeAllPendingNotificationRequests();
-    result("All notifications deleted")
+    result("Ok")
   }
   
   private func deleteAlarm(result: FlutterResult){
     let identifier = self.time?[0] as? String ?? "Omg"
     
     UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier] )
-    result("Alarm Notification is deleted")
+    result("Ok")
   }
 }

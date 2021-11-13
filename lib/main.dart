@@ -8,7 +8,6 @@ import 'package:clock_test/ui/clock_base_app.dart';
 import 'package:clock_test/ui/clock_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {
@@ -23,16 +22,13 @@ Future<void> main() async {
 }
 
 class AlarmApp extends StatefulWidget {
-  static const MethodChannel methodChannel =
-      MethodChannel('co.moxielabs.dev/alarm');
-
   @override
   _AlarmAppState createState() => _AlarmAppState();
 }
 
 class _AlarmAppState extends State<AlarmApp> {
-  int _hour = 0;
-  int _minute = 0;
+  /*int _hour = 0;
+  int _minute = 0;*/
 
   var timeInMillies;
 
@@ -73,7 +69,7 @@ class _AlarmAppState extends State<AlarmApp> {
     );
   }
 
-  _setupAlarm(BuildContext context) async {
+  /*_setupAlarm(BuildContext context) async {
     String data = await AlarmApp.methodChannel
         .invokeMethod("startAlarm", ["idalarma", _hour, _minute, false]);
     debugPrint(data);
@@ -90,5 +86,5 @@ class _AlarmAppState extends State<AlarmApp> {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Text(data),
     ));
-  }
+  }*/
 }

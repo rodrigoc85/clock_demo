@@ -29,4 +29,19 @@ class AlarmData {
         repeats: this.repeats,
         enabled: this.enabled);
   }
+
+  AlarmData.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        hours = json['hours'],
+        minutes = json['minutes'],
+        repeats = json['repeats'],
+        enabled = json['enabled'];
+
+  Map<String, dynamic> toJson() => {
+        'id': this.id,
+        'hours': this.hours,
+        'minutes': this.minutes,
+        'repeats': this.repeats,
+        'enabled': this.enabled,
+      };
 }
