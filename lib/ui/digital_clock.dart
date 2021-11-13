@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:clock_test/helpers/helpers.dart';
 
 class DigitalClock extends StatefulWidget {
   DigitalClock({Key? key}) : super(key: key);
@@ -47,15 +48,5 @@ class _DigitalClockState extends State<DigitalClock> {
         ],
       ),
     );
-  }
-
-  String formatTimeDigit(int val) {
-    late String sHour;
-    if (val < 10) {
-      sHour = "0$val";
-    } else {
-      sHour = "$val";
-    }
-    return sHour;
   }
 }

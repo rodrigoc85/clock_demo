@@ -48,40 +48,35 @@ import Flutter
     let content = UNMutableNotificationContent()
     let center = UNUserNotificationCenter.current()
     content.title = "Alarm"
-    content.body = "This is an alarm notification"
+    //content.body = "This is an alarm notification"
     content.sound = UNNotificationSound.default
     content.categoryIdentifier = "Local Notification"
-    content.userInfo = ["example": "information"]
-
+    //content.userInfo = ["example": "information"]
+    
+    let identifier = self.time?[0] as? String ?? "Omg"
+    
     var date = DateComponents()
-      date.hour = self.time?[1] as? Int
-      date.minute = self.time?[2] as? Int
-    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-
-  
-    let request = UNNotificationRequest(identifier: "Omi", content: content, trigger: trigger)
+    date.hour = self.time?[1] as? Int
+    date.minute = self.time?[2] as? Int
+    
+    let repeatAlarm = self.time?[3] as? Bool ?? false
+    
+    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeatAlarm)
+    
+    let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
     center.add(request)
       result("Alarm Notification is set")
   }
-  
-  /*private func getAlarms(result: FlutterResult) {
-    let encoder = JSONEncoder()
-    let center = UNUserNotificationCenter.current()
-    center.getPendingNotificationRequests(completionHandler: { requests in
-        for request in requests {
-            do {
-                
-                
-            }
-            catch {
-                print(error)
-            }
-        }
-    })
-  }*/
     
+  private func removeAllAlarms(result: FlutterResult) {
+    UNUserNotificationCenter.current().removeAllPendingNotificationRequests();
+    result("All notifications deleted")
+  }
+  
   private func deleteAlarm(result: FlutterResult){
-    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["Omi"] )
+    let identifier = self.time?[0] as? String ?? "Omg"
+    
+    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [identifier] )
     result("Alarm Notification is deleted")
   }
 }
