@@ -51,10 +51,8 @@ import Flutter
     let content = UNMutableNotificationContent()
     let center = UNUserNotificationCenter.current()
     content.title = "Alarm"
-    //content.body = "This is an alarm notification"
     content.sound = UNNotificationSound.default
     content.categoryIdentifier = "Local Notification"
-    //content.userInfo = ["example": "information"]
     
     let identifier = self.time?[0] as? String ?? "Omg"
     

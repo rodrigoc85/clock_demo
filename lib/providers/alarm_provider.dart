@@ -8,13 +8,7 @@ import 'dart:convert';
 class AlarmProvider extends ChangeNotifier {
   MethodChannel methodChannel = MethodChannel('co.moxielabs.dev/alarm');
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  List<AlarmData> _alarms = [
-    /*AlarmData(id: "1", hours: 5, minutes: 20, repeats: false, enabled: true),
-    AlarmData(id: "3", hours: 10, minutes: 45, repeats: true, enabled: false),
-    AlarmData(id: "4", hours: 23, minutes: 34, repeats: false, enabled: false),
-    AlarmData(id: "2", hours: 8, minutes: 30, repeats: true, enabled: true),
-    AlarmData(id: "5", hours: 5, minutes: 10, repeats: false, enabled: true),*/
-  ];
+  List<AlarmData> _alarms = [];
 
   List<AlarmData> get alarms {
     _alarms.sort((AlarmData a, AlarmData b) {
@@ -49,9 +43,10 @@ class AlarmProvider extends ChangeNotifier {
     this.notifyListeners();
   }
 
-  deleteAlarm(String id) {
+  deleteAlarm(String id) async {
     for (var i = 0; i < _alarms.length; i++) {
       if (_alarms[i].id == id) {
+        await methodChannel.invokeMethod("deleteAlarm", [id]);
         _alarms.removeAt(i);
         break;
       }
@@ -81,7 +76,15 @@ class AlarmProvider extends ChangeNotifier {
   }
 
   _storeAlarm(AlarmData alarm) async {
-    return await methodChannel.invokeMethod(
-        "startAlarm", [alarm.id, alarm.hours, alarm.minutes, alarm.repeats]);
+    DateTime now = DateTime.now().toLocal();
+    DateTime alarmTime = DateTime(
+        now.year, now.month, now.day, alarm.hours, alarm.minutes, 0, 0, 0);
+    return await methodChannel.invokeMethod("startAlarm", [
+      alarm.id,
+      alarm.hours,
+      alarm.minutes,
+      alarm.repeats,
+      alarmTime.millisecondsSinceEpoch
+    ]);
   }
 }

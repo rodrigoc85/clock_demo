@@ -8,13 +8,6 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
 void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
-  /*AlarmData(
-      id: "${DateTime.now().millisecondsSinceEpoch}",
-      hours: DateTime.now().hour.toString(),
-      minutes: DateTime.now().minute.toString(),
-      repeats: false,
-      enabled: true,
-    ); */
   final alarmProvider = Provider.of<AlarmProvider>(context, listen: false);
   showCupertinoModalBottomSheet(
     barrierColor: Colors.black.withOpacity(0.5),
