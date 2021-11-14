@@ -1,4 +1,5 @@
 import 'package:clock_test/ui/analog_clock/analog_clock.dart';
+import 'package:clock_test/ui/date_full_day.dart';
 import 'package:flutter/material.dart';
 
 class AnalogClockPage extends StatelessWidget {
@@ -9,16 +10,18 @@ class AnalogClockPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black87,
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            height: MediaQuery.of(context).size.height * 0.8,
+            height: MediaQuery.of(context).size.height * 0.55,
             width: MediaQuery.of(context).size.width * 0.8,
             child: AnalogClock(),
-          )
+          ),
+          DateFullDay(),
         ],
       ),
     );

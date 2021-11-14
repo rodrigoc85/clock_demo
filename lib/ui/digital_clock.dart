@@ -13,6 +13,7 @@ class _DigitalClockState extends State<DigitalClock> {
   late Timer _timer;
   late int _hour;
   late int _minute;
+  int tickIndex = 0;
 
   @override
   void initState() {
@@ -36,14 +37,37 @@ class _DigitalClockState extends State<DigitalClock> {
 
   @override
   Widget build(BuildContext context) {
+    tickIndex++;
     return Container(
+      height: 130,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            "${formatTimeDigit(_hour)}:${formatTimeDigit(_minute)}",
-            style: TextStyle(fontSize: 150, fontFamily: 'Digital-7'),
+            formatTimeDigit(_hour),
+            style: TextStyle(
+                fontSize: 150,
+                fontFamily: 'Digital-7',
+                color: Colors.orangeAccent),
+          ),
+          SizedBox(
+              width: 25,
+              child: (tickIndex % 2 == 0)
+                  ? null
+                  : Text(
+                      ":",
+                      style: TextStyle(
+                          fontSize: 150,
+                          fontFamily: 'Digital-7',
+                          color: Colors.orangeAccent),
+                    )),
+          Text(
+            formatTimeDigit(_minute),
+            style: TextStyle(
+                fontSize: 150,
+                fontFamily: 'Digital-7',
+                color: Colors.orangeAccent),
           ),
         ],
       ),

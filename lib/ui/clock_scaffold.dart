@@ -45,9 +45,14 @@ class _ClockScaffoldState extends State<ClockScaffold>
     return Platform.isIOS
         ? CupertinoTabScaffold(
             tabBar: CupertinoTabBar(
+                inactiveColor: CupertinoColors.systemGrey,
+                activeColor: CupertinoColors.activeOrange,
                 items: widget.pages
                     .map((page) => BottomNavigationBarItem(
-                        icon: Icon(page.icon), label: page.title))
+                        icon: Icon(
+                          page.icon,
+                        ),
+                        label: page.title))
                     .toList()),
             tabBuilder: (BuildContext context, int index) {
               return CupertinoPageScaffold(
@@ -70,9 +75,20 @@ class _ClockScaffoldState extends State<ClockScaffold>
         : Scaffold(
             appBar: AppBar(
               bottom: TabBar(
+                  indicatorColor: Colors.orangeAccent,
                   controller: _tabController,
                   tabs: widget.pages
-                      .map((page) => Tab(icon: Icon(page.icon)))
+                      .asMap()
+                      .map((i, page) => MapEntry(
+                          i,
+                          Tab(
+                              icon: Icon(
+                            page.icon,
+                            color: (i == _tabController.index)
+                                ? Colors.orangeAccent
+                                : Colors.grey,
+                          ))))
+                      .values
                       .toList()),
               title: Text(widget.mainTitle),
             ),
@@ -83,6 +99,7 @@ class _ClockScaffoldState extends State<ClockScaffold>
             ),
             floatingActionButton: _hasAction(_tabController.index)
                 ? FloatingActionButton(
+                    backgroundColor: Colors.orangeAccent,
                     onPressed: _actionHandler(_tabController.index),
                     child: Icon(
                       _actionIcon(_tabController.index),

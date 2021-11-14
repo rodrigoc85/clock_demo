@@ -18,7 +18,6 @@ class ClockBaseApp extends StatelessWidget {
         title: 'Alarm Demo',
         darkTheme: ThemeData(
           brightness: Brightness.dark,
-          /* dark theme settings */
         ),
         themeMode: ThemeMode.dark,
         home: Platform.isIOS

@@ -1,3 +1,4 @@
+import 'package:clock_test/ui/date_full_day.dart';
 import 'package:clock_test/ui/digital_clock.dart';
 import 'package:flutter/material.dart';
 
@@ -9,12 +10,14 @@ class DigitalClockPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.black87,
       width: MediaQuery.of(context).size.width,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           DigitalClock(),
+          DateFullDay(),
         ],
       ),
     );

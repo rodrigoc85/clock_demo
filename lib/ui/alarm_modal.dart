@@ -10,11 +10,12 @@ import 'package:provider/provider.dart';
 void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
   final alarmProvider = Provider.of<AlarmProvider>(context, listen: false);
   showCupertinoModalBottomSheet(
-    barrierColor: Colors.black.withOpacity(0.5),
+    barrierColor: Colors.grey[800]!.withOpacity(0.5),
     context: context,
     builder: (context) => Material(
         child: CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
+        backgroundColor: Colors.black54,
         leading: GestureDetector(
           onTap: () {
             Navigator.pop(context);
@@ -32,6 +33,9 @@ void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
         ),
         middle: Text(
           title,
+          style: TextStyle(
+            color: Colors.white,
+          ),
         ),
         trailing: GestureDetector(
           onTap: () {
@@ -52,7 +56,7 @@ void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
           padding: const EdgeInsets.only(top: 45),
           child: Container(
               height: MediaQuery.of(context).copyWith().size.height / 3,
-              color: Colors.grey[800],
+              color: Colors.black54,
               child: Column(
                 children: [
                   AlarmTimeField(alarm: alarm),

@@ -16,7 +16,7 @@ class AnalogClock extends StatefulWidget {
 
   AnalogClock({
     Key? key,
-    this.handsColor = Colors.white,
+    this.handsColor = Colors.orangeAccent, //Colors.white,
     this.tickColor = Colors.white60,
     this.secondHandColor = Colors.redAccent,
     this.width = double.infinity,
