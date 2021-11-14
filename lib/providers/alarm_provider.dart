@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:clock_test/helpers/helpers.dart';
 import 'package:clock_test/models/alarm_data.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,14 @@ class AlarmProvider extends ChangeNotifier {
   MethodChannel methodChannel = MethodChannel('co.moxielabs.dev/alarm');
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   List<AlarmData> _alarms = [];
+  Timer? _nextAlarmTimeOut;
+  StreamController<bool> controller = StreamController<bool>();
+
+  @override
+  void dispose() {
+    super.dispose();
+    controller.close();
+  }
 
   List<AlarmData> get alarms {
     _alarms.sort((AlarmData a, AlarmData b) {
@@ -40,6 +50,7 @@ class AlarmProvider extends ChangeNotifier {
     final SharedPreferences prefs = await _prefs;
     List<dynamic> rawAlarms = jsonDecode(prefs.getString("alarms") ?? "[]");
     _alarms = rawAlarms.map((e) => AlarmData.fromJson(e)).toList();
+    _scheduleNextAlarmScreen();
     this.notifyListeners();
   }
 
@@ -51,6 +62,7 @@ class AlarmProvider extends ChangeNotifier {
         break;
       }
     }
+    _scheduleNextAlarmScreen();
     this.notifyListeners();
   }
 
@@ -65,6 +77,7 @@ class AlarmProvider extends ChangeNotifier {
       if (alarm.enabled) _storeAlarm(alarm);
     }
     prefs.setString("alarms", jsonEncode(_alarms));
+    _scheduleNextAlarmScreen();
     this.notifyListeners();
   }
 
@@ -86,5 +99,38 @@ class AlarmProvider extends ChangeNotifier {
       alarm.repeats,
       alarmTime.millisecondsSinceEpoch
     ]);
+  }
+
+  Stream get stream {
+    return controller.stream;
+  }
+
+  _scheduleNextAlarmScreen() {
+    if (_nextAlarmTimeOut != null) {
+      _nextAlarmTimeOut!.cancel();
+    }
+    AlarmData? nextAlarm = _closestAlarm();
+    if (nextAlarm == null) return;
+    _nextAlarmTimeOut = Timer(alarmTimeToRun(nextAlarm), () {
+      if (alarmTimeToRun(nextAlarm).inSeconds.abs() < 60) {
+        _scheduleNextAlarmScreen();
+        controller.add(true);
+      }
+    });
+  }
+
+  AlarmData? _closestAlarm() {
+    AlarmData? closest;
+    DateTime now = DateTime.now();
+    for (var alarm in _alarms) {
+      if (alarm.enabled && (alarmDateTime(alarm).isAfter(now))) {
+        if (closest == null) {
+          closest = alarm;
+        } else if (alarmTimeToRun(alarm) < alarmTimeToRun(closest)) {
+          closest = alarm;
+        }
+      }
+    }
+    return closest;
   }
 }

@@ -17,9 +17,6 @@ class _AlarmPageState extends State<AlarmPage> {
   @override
   void initState() {
     super.initState();
-    final alarmProvider = Provider.of<AlarmProvider>(context, listen: false);
-    alarmProvider.cleanAlarmsOnFirstRun(context);
-    alarmProvider.loadAlarms(context);
   }
 
   @override
