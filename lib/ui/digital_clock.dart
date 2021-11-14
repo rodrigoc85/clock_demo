@@ -46,7 +46,7 @@ class _DigitalClockState extends State<DigitalClock> {
         children: <Widget>[
           Text(
             formatTimeDigit(_hour),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 150,
                 fontFamily: 'Digital-7',
                 color: Colors.orangeAccent),
@@ -55,7 +55,7 @@ class _DigitalClockState extends State<DigitalClock> {
               width: 25,
               child: (tickIndex % 2 == 0)
                   ? null
-                  : Text(
+                  : const Text(
                       ":",
                       style: TextStyle(
                           fontSize: 150,
@@ -64,7 +64,7 @@ class _DigitalClockState extends State<DigitalClock> {
                     )),
           Text(
             formatTimeDigit(_minute),
-            style: TextStyle(
+            style: const TextStyle(
                 fontSize: 150,
                 fontFamily: 'Digital-7',
                 color: Colors.orangeAccent),

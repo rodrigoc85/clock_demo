@@ -21,7 +21,7 @@ class _AlarmRepeatFieldState extends State<AlarmRepeatField> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Repeats every day"),
+          const Text("Repeats every day"),
           CupertinoSwitch(
               value: widget.alarm.repeats,
               onChanged: (bool newVal) {

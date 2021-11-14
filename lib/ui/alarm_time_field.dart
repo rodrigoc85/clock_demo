@@ -22,14 +22,14 @@ class _AlarmTimeFieldState extends State<AlarmTimeField> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("Time"),
+          const Text("Time"),
           ElevatedButton(
             onPressed: () {
               _selectTime(context);
             },
             child: Text(
               "${formatTimeDigit(widget.alarm.hours)}:${formatTimeDigit(widget.alarm.minutes)}",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
             ),
             style: ButtonStyle(
                 backgroundColor:

@@ -8,7 +8,7 @@ class DateFullDay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       DateFormat('yyyy / MMM / dd').format(DateTime.now()),
-      style: TextStyle(fontSize: 20),
+      style: const TextStyle(fontSize: 20),
     );
   }
 }

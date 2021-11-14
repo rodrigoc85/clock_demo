@@ -77,32 +77,32 @@ class AnalogClockPainter extends CustomPainter {
     Offset paddingX = Offset(p * scaleFactor, 0.0);
     Offset paddingY = Offset(0.0, p * scaleFactor);
 
-    TextSpan span12 = new TextSpan(style: style, text: "12");
-    TextPainter tp12 = new TextPainter(
+    TextSpan span12 = TextSpan(style: style, text: "12");
+    TextPainter tp12 = TextPainter(
         text: span12,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp12.layout();
     tp12.paint(canvas, size.topCenter(-tp12.size.topCenter(-paddingY)));
 
-    TextSpan span6 = new TextSpan(style: style, text: "6");
-    TextPainter tp6 = new TextPainter(
+    TextSpan span6 = TextSpan(style: style, text: "6");
+    TextPainter tp6 = TextPainter(
         text: span6,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp6.layout();
     tp6.paint(canvas, size.bottomCenter(-tp6.size.bottomCenter(paddingY)));
 
-    TextSpan span3 = new TextSpan(style: style, text: "3");
-    TextPainter tp3 = new TextPainter(
+    TextSpan span3 = TextSpan(style: style, text: "3");
+    TextPainter tp3 = TextPainter(
         text: span3,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp3.layout();
     tp3.paint(canvas, size.centerRight(-tp3.size.centerRight(paddingX)));
 
-    TextSpan span9 = new TextSpan(style: style, text: "9");
-    TextPainter tp9 = new TextPainter(
+    TextSpan span9 = TextSpan(style: style, text: "9");
+    TextPainter tp9 = TextPainter(
         text: span9,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
@@ -128,96 +128,96 @@ class AnalogClockPainter extends CustomPainter {
     Offset paddingY_4 = Offset(scaleFactor * 48, -(p * scaleFactor * 2.2));
     Offset paddingX_5 = Offset(p * scaleFactor * 3.4, -(scaleFactor * 105));
 
-    TextSpan span10 = new TextSpan(style: style, text: "10");
-    TextPainter tp10 = new TextPainter(
+    TextSpan span10 = TextSpan(style: style, text: "10");
+    TextPainter tp10 = TextPainter(
         text: span10,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp10.layout();
     tp10.paint(canvas, size.topCenter(-tp10.size.topCenter(paddingX_10)));
 
-    TextSpan span11 = new TextSpan(style: style, text: "11");
-    TextPainter tp11 = new TextPainter(
+    TextSpan span11 = TextSpan(style: style, text: "11");
+    TextPainter tp11 = TextPainter(
         text: span11,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp11.layout();
     tp11.paint(canvas, size.topCenter(-tp11.size.topCenter(paddingY_11)));
 
-    TextSpan span12 = new TextSpan(style: style, text: "12");
-    TextPainter tp12 = new TextPainter(
+    TextSpan span12 = TextSpan(style: style, text: "12");
+    TextPainter tp12 = TextPainter(
         text: span12,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp12.layout();
     tp12.paint(canvas, size.topCenter(-tp12.size.topCenter(-paddingY)));
 
-    TextSpan span1 = new TextSpan(style: style, text: "1");
-    TextPainter tp1 = new TextPainter(
+    TextSpan span1 = TextSpan(style: style, text: "1");
+    TextPainter tp1 = TextPainter(
         text: span1,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp1.layout();
     tp1.paint(canvas, size.topCenter(-tp1.size.topCenter(-paddingY_1)));
 
-    TextSpan span2 = new TextSpan(style: style, text: "2");
-    TextPainter tp2 = new TextPainter(
+    TextSpan span2 = TextSpan(style: style, text: "2");
+    TextPainter tp2 = TextPainter(
         text: span2,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp2.layout();
     tp2.paint(canvas, size.topCenter(-tp2.size.topCenter(-paddingX_2)));
 
-    TextSpan span6 = new TextSpan(style: style, text: "6");
-    TextPainter tp6 = new TextPainter(
+    TextSpan span6 = TextSpan(style: style, text: "6");
+    TextPainter tp6 = TextPainter(
         text: span6,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp6.layout();
     tp6.paint(canvas, size.bottomCenter(-tp6.size.bottomCenter(paddingY)));
 
-    TextSpan span7 = new TextSpan(style: style, text: "7");
-    TextPainter tp7 = new TextPainter(
+    TextSpan span7 = TextSpan(style: style, text: "7");
+    TextPainter tp7 = TextPainter(
         text: span7,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp7.layout();
     tp7.paint(canvas, size.topCenter(-tp7.size.topCenter(-paddingY_7)));
 
-    TextSpan span8 = new TextSpan(style: style, text: "8");
-    TextPainter tp8 = new TextPainter(
+    TextSpan span8 = TextSpan(style: style, text: "8");
+    TextPainter tp8 = TextPainter(
         text: span8,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp8.layout();
     tp8.paint(canvas, size.topCenter(-tp8.size.topCenter(-paddingX_8)));
 
-    TextSpan span3 = new TextSpan(style: style, text: "3");
-    TextPainter tp3 = new TextPainter(
+    TextSpan span3 = TextSpan(style: style, text: "3");
+    TextPainter tp3 = TextPainter(
         text: span3,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp3.layout();
     tp3.paint(canvas, size.centerRight(-tp3.size.centerRight(paddingX)));
 
-    TextSpan span4 = new TextSpan(style: style, text: "4");
-    TextPainter tp4 = new TextPainter(
+    TextSpan span4 = TextSpan(style: style, text: "4");
+    TextPainter tp4 = TextPainter(
         text: span4,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp4.layout();
     tp4.paint(canvas, size.centerRight(-tp4.size.centerRight(paddingY_4)));
 
-    TextSpan span5 = new TextSpan(style: style, text: "5");
-    TextPainter tp5 = new TextPainter(
+    TextSpan span5 = TextSpan(style: style, text: "5");
+    TextPainter tp5 = TextPainter(
         text: span5,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
     tp5.layout();
     tp5.paint(canvas, size.centerRight(-tp5.size.centerRight(paddingX_5)));
 
-    TextSpan span9 = new TextSpan(style: style, text: "9");
-    TextPainter tp9 = new TextPainter(
+    TextSpan span9 = TextSpan(style: style, text: "9");
+    TextPainter tp9 = TextPainter(
         text: span9,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);
@@ -229,7 +229,7 @@ class AnalogClockPainter extends CustomPainter {
     final radians = 2 * pi * percentage;
     final angle = -pi / 2.0 + radians;
 
-    return new Offset(length * cos(angle), length * sin(angle));
+    return Offset(length * cos(angle), length * sin(angle));
   }
 
   // ref: https://www.codenameone.com/blog/codename-one-graphics-part-2-drawing-an-analog-clock.html
@@ -309,12 +309,12 @@ class AnalogClockPainter extends CustomPainter {
     String hour = datetime.hour.toString().padLeft(2, "0");
     String minute = datetime.minute.toString().padLeft(2, "0");
     String second = datetime.second.toString().padLeft(2, "0");
-    TextSpan digitalClockSpan = new TextSpan(
+    TextSpan digitalClockSpan = TextSpan(
         style: TextStyle(
             color: digitalClockColor,
             fontSize: 18 * scaleFactor * textScaleFactor),
         text: "$hour:$minute:$second");
-    TextPainter digitalClockTP = new TextPainter(
+    TextPainter digitalClockTP = TextPainter(
         text: digitalClockSpan,
         textAlign: TextAlign.center,
         textDirection: TextDirection.ltr);

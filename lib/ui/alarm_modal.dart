@@ -20,8 +20,8 @@ void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Padding(
-            padding: const EdgeInsets.only(top: 14.0),
+          child: const Padding(
+            padding: EdgeInsets.only(top: 14.0),
             child: Text(
               "Cancel",
               style: TextStyle(
@@ -42,7 +42,7 @@ void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
             alarmProvider.saveAlarm(alarm);
             Navigator.pop(context);
           },
-          child: Text(
+          child: const Text(
             "Save",
             style: TextStyle(
                 fontWeight: FontWeight.w300,

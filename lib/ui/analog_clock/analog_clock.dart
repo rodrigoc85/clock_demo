@@ -55,11 +55,12 @@ class _AnalogClockState extends State<AnalogClock> {
       child: Center(
           child: AspectRatio(
               aspectRatio: 1.0,
-              child: new Container(
-                  constraints: BoxConstraints(minWidth: 48.0, minHeight: 48.0),
+              child: Container(
+                  constraints:
+                      const BoxConstraints(minWidth: 48.0, minHeight: 48.0),
                   width: double.infinity,
-                  child: new CustomPaint(
-                    painter: new AnalogClockPainter(
+                  child: CustomPaint(
+                    painter: AnalogClockPainter(
                         datetime: datetime,
                         hourHandColor: widget.handsColor,
                         minuteHandColor: widget.handsColor,

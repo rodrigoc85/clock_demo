@@ -35,7 +35,7 @@ class _AlarmPageState extends State<AlarmPage> {
   }
 
   Widget _emptyListContent() {
-    return Center(
+    return const Center(
       child: Text(
         "There are no alarms configured",
         style: TextStyle(fontWeight: FontWeight.w300, color: Colors.white70),
@@ -50,8 +50,8 @@ class _AlarmPageState extends State<AlarmPage> {
         if (index == 0) {
           return Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
                 child: Text("Swipe right for more options",
                     style: TextStyle(
                         color: Colors.white70,
