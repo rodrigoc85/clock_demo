@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+///
+/// AnalogClockPainter:
+/// Draws the analog clock on the screen according to the time specified by
+/// parameter.
+/// Based on package https://pub.dev/packages/analog_clock
+///
 class AnalogClockPainter extends CustomPainter {
   DateTime datetime;
   final bool showDigitalClock;

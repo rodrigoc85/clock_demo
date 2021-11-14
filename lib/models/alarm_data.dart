@@ -1,5 +1,10 @@
+///
+/// AlarmData:
+/// It keeps the raw data of an alarm, and implements some transformations to
+/// other formats.
+///
 class AlarmData {
-  String id; // = "${DateTime.now().millisecondsSinceEpoch}";
+  String id;
   int hours;
   int minutes;
   bool repeats;

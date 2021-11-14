@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 
+///
+/// openAlarmModal:
+/// Modal that displays the options to create / edit an alarm
+///
 void openAlarmModal(BuildContext context, String title, AlarmData alarm) {
   final alarmProvider = Provider.of<AlarmProvider>(context, listen: false);
   showCupertinoModalBottomSheet(

@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:clock_test/helpers/helpers.dart';
 import 'package:provider/provider.dart';
 
+///
+/// AlarmTile:
+/// Displays an alarm in the alarm list. Shows the summary information and
+/// allows to activate/deactivate it.
+///
 class AlarmTile extends StatefulWidget {
   final AlarmData alarm;
 

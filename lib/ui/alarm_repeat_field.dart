@@ -2,6 +2,11 @@ import 'package:clock_test/models/alarm_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///
+/// AlarmRepeatField:
+/// Auxiliary widget that allows to turn on/of the repetition of an alarm. It
+/// is used from the modal that allows adding or editing a new alarm.
+///
 class AlarmRepeatField extends StatefulWidget {
   final AlarmData alarm;
   const AlarmRepeatField({

@@ -7,6 +7,12 @@ import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
+///
+/// AlarmProvider:
+/// Stores alarm information.
+/// Execute communication with native code on iOS and Android through the Method Channel.
+/// Control the time and notify when an alarm is ready to be displayed.
+///
 class AlarmProvider extends ChangeNotifier {
   MethodChannel methodChannel = MethodChannel('co.moxielabs.dev/alarm');
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();

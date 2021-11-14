@@ -6,6 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+///
+/// AlarmPage:
+/// It is the third main view of the App. Contains the alarm page structure.
+/// It lists them and allows the user to manage them.
+///
 class AlarmPage extends StatefulWidget {
   AlarmPage({Key? key}) : super(key: key);
 

@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:clock_test/helpers/helpers.dart';
 
+///
+/// AlarmTimeField:
+/// Auxiliary widget that allows to run the time picker. It is used from the
+/// modal that allows adding or editing a new alarm.
+///
 class AlarmTimeField extends StatefulWidget {
   final AlarmData alarm;
   const AlarmTimeField({

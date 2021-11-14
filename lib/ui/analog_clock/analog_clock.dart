@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ///
+/// AnalogClock:
+/// Displays the analog clock on the screen and executes the time logic.
 /// Based on package https://pub.dev/packages/analog_clock
 ///
 class AnalogClock extends StatefulWidget {

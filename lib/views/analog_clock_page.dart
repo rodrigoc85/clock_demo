@@ -2,6 +2,11 @@ import 'package:clock_test/ui/analog_clock/analog_clock.dart';
 import 'package:clock_test/ui/date_full_day.dart';
 import 'package:flutter/material.dart';
 
+///
+/// AnalogClockPage:
+/// It is the second main view of the App. It contains the analog clock and
+/// the date.
+///
 class AnalogClockPage extends StatelessWidget {
   const AnalogClockPage({
     Key? key,

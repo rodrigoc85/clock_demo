@@ -13,6 +13,12 @@ import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 
+///
+/// AlarmApp:
+/// Defines the base structure of the App and the content and behavior of each tab.
+/// It also listens to the stream of alarms and raises a dialogue when the time
+/// for any of them arrives.
+///
 class AlarmApp extends StatefulWidget {
   @override
   _AlarmAppState createState() => _AlarmAppState();

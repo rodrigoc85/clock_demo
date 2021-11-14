@@ -2,6 +2,12 @@ import 'package:clock_test/ui/date_full_day.dart';
 import 'package:clock_test/ui/digital_clock.dart';
 import 'package:flutter/material.dart';
 
+///
+/// DigitalClockPage:
+/// It is the first main view of the App. It contains the digital clock and
+/// the date.
+///
+
 class DigitalClockPage extends StatelessWidget {
   const DigitalClockPage({
     Key? key,

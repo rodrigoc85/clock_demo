@@ -3,6 +3,12 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+///
+/// ClockScaffold:
+/// Differentiate the type of Scaffold to use depending on the platform. It
+/// uses CupertinoTabScaffold for iOS and a pure Material Scaffold for Android.
+/// It also incorporates the tabs and actions according to each one.
+///
 class ClockScaffold extends StatefulWidget {
   final List<TabContent> pages;
   final String mainTitle;
@@ -120,6 +126,10 @@ class _ClockScaffoldState extends State<ClockScaffold>
   }
 }
 
+///
+/// ActionItem:
+/// Auxiliary class to manage the actions in the tabs.
+///
 class ActionItem {
   IconData icon;
   Function onTap;
@@ -130,6 +140,10 @@ class ActionItem {
   });
 }
 
+///
+/// TabContent:
+/// Auxiliary class to manage the tabs in a general way between both platforms.
+///
 class TabContent {
   IconData icon;
   String title;

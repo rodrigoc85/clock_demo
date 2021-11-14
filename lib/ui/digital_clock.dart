@@ -2,6 +2,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:clock_test/helpers/helpers.dart';
 
+///
+/// DigitalClock:
+/// Implements the digital clock Widget.
+///
 class DigitalClock extends StatefulWidget {
   DigitalClock({Key? key}) : super(key: key);
 
